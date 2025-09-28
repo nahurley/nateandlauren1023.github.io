@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Nate and Lauren's Registry!</title>
+    <style>
+      h1.title {
+        text-align: center;
+        font-family: cursive;
+        font-weight: 700;
+        font-style: italic;
+      }
+
+      .registry-controls {
+        display: flex;
+        justify-content: center;
+        margin: 8px 0 0;
+        font-family: cursive;
+        font-weight: bold;
+      }
+
+      .item-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center; /* center children inside this container */
+        gap: 8px;
+        margin-top: 20px;
+        height: fit-content;
+        width: 300px; /* shrink to fit children */
+        border-radius: 10px;
+        background-color: rgb(232, 195, 60);
+        overflow: hidden;
+        position: relative;
+        padding: 10px;
+        padding-top: 20px;
+        justify-content: center;
+        text-align: center;
+      }
+
+      .item-container img {
+        margin: 0 auto;
+        height: 175px;
+        width: auto;
+        max-width: 100%;
+        max-height: 100%;
+        border-radius: 10px;
+        padding: 20px;
+        background-color: white;
+      }
+
+      .item-container:hover {
+        transition: transform 0.2s ease-in-out; /* Smooth transition effect */
+        transform: scale(1.05); /* Slightly enlarge the image on hover */
+        cursor: pointer;
+      }
+
+      .item-container a {
+        text-decoration: none;   /* removes underline */
+        color: inherit;          /* keeps your chosen text color */
+      }
+
+      .item-style {
+        font-size: 15px;
+        color: rgb(0, 0, 0);
+        text-decoration: none;
+        margin-top: 5px;
+        margin-bottom: 10px;
+        font-family: cursive;
+        font-weight: bold;
+        text-align: center;
+      }
+
+      /* Hidden handling */
+      .item-container.hidden {
+        display: none;
+      }
+      /* Use !important to beat any legacy inline styles */
+      body.reveal-hidden .item-container.hidden {
+        display: flex !important;  /* reveal them */
+        opacity: 0.6;              /* indicate they are hidden items */
+      }
+      body.reveal-hidden .item-container.hidden::after {
+        content: 'Hidden';
+        position: absolute;
+        top: 6px;
+        right: 6px;
+        background: rgba(0,0,0,0.6);
+        color: #fff;
+        font-size: 12px;
+        padding: 2px 6px;
+        border-radius: 6px;
+      }
+
+      /* Parent row that places item-container blocks side-by-side */
+      .items-row {
+        display: flex;
+        gap: 20px;
+        align-items: flex-start;
+        margin-left: 20px; /* align the row slightly in from the left */
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      body {
+        background-image: url('https://www.freevector.com/uploads/vector/preview/18843/Free-Fall-Background-Vectors.jpg');
+        background-size: cover;
+        background-position: center;
+        background-repeat: repeat-y;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1 class="title"><br>Nate and Lauren's Registry!</h1>
+    </header>
+
+    <!-- Only the "Show hidden items" checkbox -->
+    <div class="registry-controls">
+      <label><input type="checkbox" id="showHidden"> Show hidden items</label>
+    </div>
+
+    <main>
+      <div class="items-row">
+        <div class="item-container" id="item1">
+          <a href="item1.html">
+            <img src="https://m.media-amazon.com/images/I/711+GxLpO3L._AC_SL1500_.jpg" alt="Item 1">
+            <p class="item-style">Price: $169.89 | Purchased: No</p>
+          </a>
+        </div>
+        <div class="item-container" id="item2">
+          <a href="item2.html">
+            <img src="https://m.media-amazon.com/images/I/51YPrTd6doS._AC_SL1500_.jpg" alt="Item 2">
+            <p class="item-style">Price: $35.99 | Purchased: No</p>
+          </a>
+        </div>
+        <div class="item-container" id="item3">
+          <a href="item3.html">
+            <img src="https://assets.wfcdn.com/im/55422536/resize-h1200-w1200%5Ecompr-r85/2186/218607081/Simply+White+10.5%22+Round+Dinner+Plate%2C+Set+Of+6.jpg" alt="Item 3">
+            <p class="item-style">Price: $25.59 | Purchased: No</p>
+          </a>
+        </div>
+        <div class="item-container" id="item4">
+          <a href="item4.html">
+            <img src="https://m.media-amazon.com/images/I/71RBF21qYHL._AC_SX679_.jpg" alt="Item 4">
+            <p class="item-style">Price: $1,898.69 | Purchased: No</p>
+          </a>
+        </div>
+        <div class="item-container" id="item5">
+          <a href="item5.html">
+            <img src="https://m.media-amazon.com/images/I/816gDsBuwSL._AC_SX679_.jpg" alt="Item 5">
+            <p class="item-style">Price: $35.95 | Purchased: No</p>
+          </a>
+        </div>
+        <div class="item-container" id="item6">
+          <a href="item6.html">
+            <img src="https://m.media-amazon.com/images/I/91nHO8S5y8L._AC_SX466_.jpg" alt="Item 6">
+            <p class="item-style">Price: $807.49 | Purchased: No</p>
+          </a>
+        </div>
+        <div class="item-container" id="item7">
+          <a href="item7.html">
+            <img src="https://i.etsystatic.com/30608199/c/1639/1301/180/349/il/754806/5742040766/il_340x270.5742040766_jqnx.jpg" alt="Item 7">
+            <p class="item-style">Give to The Hurley's Honeymoon fund!</p>
+          </a>
+        </div>
+      </div>
+    </main>
+    <footer></footer>
+
+    <script>
+      // Helpers to manage the persistent hidden items list
+      function getHiddenList() {
+        try { return JSON.parse(localStorage.getItem('registry:hiddenItems') || '[]'); }
+        catch { return []; }
+      }
+
+      // Apply hidden classes based on the stored list
+      function renderHiddenState() {
+        const hidden = getHiddenList();
+
+        document.querySelectorAll('.item-container').forEach(el => {
+          // Remove any legacy inline display:none so CSS classes control visibility
+          if (el.style.display) el.style.removeProperty('display');
+
+          const id = el.id;
+          if (!id) return;
+          el.classList.toggle('hidden', hidden.includes(id));
+        });
+      }
+
+      // Toggle temporary reveal of hidden items
+      const showHidden = document.getElementById('showHidden');
+      showHidden.addEventListener('change', function() {
+        document.body.classList.toggle('reveal-hidden', this.checked);
+      });
+
+      document.addEventListener('DOMContentLoaded', renderHiddenState);
+    </script>
+  </body>
+</html>
