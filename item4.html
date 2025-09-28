@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Lego Set</title>
+        <style>
+            h1.title {
+                text-align: center;
+                font-family: cursive;
+                font-weight: 700;
+                font-style: italic;
+            }
+
+            .item1 {
+                width: 600px;
+                max-width: 100%;
+                height: auto;
+                max-height: 100%;
+                border-radius: 30px;
+                padding: 30px;
+                margin-top: 130px;
+                background-color: white;
+            }
+
+            .item1:hover {
+                transition: transform 0.2s ease-in-out;
+                transform: scale(1.025);
+            }
+
+            .item-container {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 8px;
+                margin-top: 250px;
+                height: fit-content;
+                width: 600px;
+                border-radius: 10px;
+                background-color: rgb(232, 195, 60);
+                overflow: hidden;
+                position: relative;
+                padding: 10px;
+                padding-top: 20px;
+                justify-content: center;
+                text-align: center;
+            }
+
+            .item-container img {
+                margin: 0 auto;
+                height: 500px;
+                width: auto;
+                max-width: 100%;
+                max-height: 100%;
+                border-radius: 10px;
+                padding: 20px;
+                background-color: white;
+            }
+
+            .item-container a {
+                text-decoration: none;
+                color: inherit;
+            }
+
+            .item-style {
+                font-size: 40px;
+                color: rgb(0, 0, 0);
+                text-decoration: none;
+                margin-left: 50px;
+                font-family: cursive;
+                font-weight: bold;
+                text-align: center;
+            }
+
+            .dropbox {
+                font-size: 20px;
+                color: rgb(0, 0, 0);
+                text-decoration: none;
+                margin: 5px;
+                font-family: cursive;
+                font-weight: bold;
+                text-align: left;
+            }
+
+
+
+            .item-style:hover {
+                text-decoration: underline;
+                transition: transform 0.2s ease-in-out;
+                transform: scale(1.05);
+            }
+
+            .items-row {
+                display: flex;
+                gap: 20px;
+                align-items: flex-start;
+                margin-left: 20px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            body {
+                background-image: url('https://www.freevector.com/uploads/vector/preview/18843/Free-Fall-Background-Vectors.jpg');
+                background-size: cover;
+                background-position: center;
+                background-repeat: repeat-y;
+            }
+        </style>
+    </head>
+    <body>
+        <header>
+        </header>
+        <main>
+            <div class="items-row">
+                <img src="https://m.media-amazon.com/images/I/71RBF21qYHL._AC_SX679_.jpg" alt="Item 4" class="item1">
+                <div class="item-container">
+                    <a href="https://www.amazon.com/LEGO-Star-Wars-Death-75159/dp/B01KOQ9AAK/ref=asc_df_B01KOQ9AAK?tag=bingshoppinga-20&linkCode=df0&hvadid=80126962060104&hvnetw=o&hvqmt=e&hvbmt=be&hvdev=c&hvlocint=&hvlocphy=84387&hvtargid=pla-4583726540880885&psc=1" class="item-style" target="_blank" rel="noopener noreferrer">$1,898.69 Click here to purchase</a>
+                    <div class="dropbox">
+                        <form id="purchaseForm4">
+                            <label for="o1">Did you chose to purchase this item? If so, please select yes and press submit.</label>
+                            <select id="o1" class="dropbox">
+                                <option value="">Select One</option>
+                                <option value="yes">Yes</option>
+                                <option value="no">No</option>
+                            </select>
+                            <br>
+                            <input type="submit" class="dropbox" value="Submit">
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <footer>
+
+        </footer>
+        <script>
+        // Helpers to manage the persistent hidden items list
+        function getHiddenList() {
+            try { return JSON.parse(localStorage.getItem('registry:hiddenItems') || '[]'); }
+            catch { return []; }
+        }
+        function setHiddenList(arr) {
+            try { localStorage.setItem('registry:hiddenItems', JSON.stringify([...new Set(arr)])); } catch {}
+        }
+
+        document.getElementById('purchaseForm4').addEventListener('submit', function (event) {
+            event.preventDefault();
+            const decision = (document.getElementById('o1').value || '').toLowerCase();
+
+            // FIX: Hide 'item2' for this page
+            const id = 'item4';
+
+            let hidden = getHiddenList();
+            if (decision === 'yes') {
+                if (!hidden.includes(id)) hidden.push(id);
+            } else {
+                hidden = hidden.filter(x => x !== id);
+            }
+            setHiddenList(hidden);
+
+            window.location.href = 'Registry.html';
+        });
+        </script>
+    </body>
+</html>

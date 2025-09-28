@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            h1.title {
+                text-align: center;
+                font-family: cursive;
+                font-weight: 700;
+                font-style: italic;
+            }
+
+            .item-container {
+                display: flex;
+                flex-direction: column;
+                align-items: center; /* center children inside this container */
+                gap: 8px;
+                margin-top: 20px;
+                height: fit-content;
+                width: 300px; /* shrink to fit children */
+                border-radius: 10px;
+                background-color: rgb(232, 195, 60);
+                overflow: hidden;
+                position: relative;
+                padding: 10px;
+                padding-top: 20px;
+                justify-content: center;
+                text-align: center;
+            }
+
+            .item-container img {
+                margin: 0 auto;
+                height: 175px;
+                width: auto;
+                max-width: 100%;
+                max-height: 100%;
+                border-radius: 10px;
+                padding: 20px;
+                background-color: white;
+            }
+
+            .item-container:hover {
+                transition: transform 0.2s ease-in-out; /* Smooth transition effect */
+                transform: scale(1.05); /* Slightly enlarge the image on hover */
+                cursor: pointer;
+            }
+
+            .item-container a {
+                text-decoration: none;   /* removes underline */
+                color: inherit;          /* keeps your chosen text color */
+            }
+
+
+            .item-style {
+                font-size: 15px;
+                color: rgb(0, 0, 0);
+                text-decoration: none;
+                margin-top: 5px;
+                margin-bottom: 10px;
+                font-family: cursive;
+                font-weight: bold;
+                text-align: center;
+            }
+            
+            /* Parent row that places item-container blocks side-by-side */
+            .items-row {
+                display: flex;
+                gap: 20px;
+                align-items: flex-start;
+                margin-left: 20px; /* align the row slightly in from the left */
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            body {
+                background-image: url('https://www.freevector.com/uploads/vector/preview/18843/Free-Fall-Background-Vectors.jpg');
+                background-size: cover;
+                background-position: center;
+                background-repeat: repeat-y;
+            }
+        </style>
+    </head>
+    <body>
+        <header>
+            <h1>This is the webpage for item 6</h1>
+        </header>
+        <main>
+            <a href="https://www.amazon.com/dp/B0CCW3CG8N/ref=sspa_dk_detail_5?pd_rd_i=B0CCW3CG8N&pd_rd_w=Q324S&content-id=amzn1.sym.30062d3d-2c31-47f3-af26-55177a669bb5&pf_rd_p=30062d3d-2c31-47f3-af26-55177a669bb5&pf_rd_r=5TK2H2P7FGR9MV9J03J5&pd_rd_wg=BrN8E&pd_rd_r=9459f593-701c-4972-aeb1-21da085a7fca&sp_csd=d2lkZ2V0TmFtZT1zcF9kZXRhaWxfdGhlbWF0aWM&th=1" class="item-style" target="_blank" rel="noopener noreferrer">$807.49 Click here to purchase</a>
+        </main>
+        <footer>
+
+        </footer>
+    </body>
+</html>

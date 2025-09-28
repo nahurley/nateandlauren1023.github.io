@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Squishmallow</title>
+        <style>
+            h1.title {
+                text-align: center;
+                font-family: cursive;
+                font-weight: 700;
+                font-style: italic;
+            }
+
+            .item1 {
+                width: 500px;
+                max-width: 100%;
+                height: auto;
+                max-height: 100%;
+                border-radius: 30px;
+                padding: 30px;
+                margin: 10px;
+                background-color: white;
+                margin-top: 50px;
+                margin-right: 75px;
+                vertical-align: middle;
+            }
+
+            .item1:hover {
+                transition: transform 0.2s ease-in-out;
+                transform: scale(1.025);
+            }
+
+            .item-container {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 8px;
+                margin-top: 250px;
+                height: fit-content;
+                width: 600px;
+                border-radius: 10px;
+                background-color: rgb(232, 195, 60);
+                overflow: hidden;
+                position: relative;
+                padding: 10px;
+                padding-top: 20px;
+                justify-content: center;
+                text-align: center;
+            }
+
+            .item-container img {
+                margin: 0 auto;
+                height: 500px;
+                width: auto;
+                max-width: 100%;
+                max-height: 100%;
+                border-radius: 10px;
+                padding: 20px;
+                background-color: white;
+            }
+
+            .item-container a {
+                text-decoration: none;
+                color: inherit;
+            }
+
+            .item-style {
+                font-size: 40px;
+                color: rgb(0, 0, 0);
+                text-decoration: none;
+                margin-left: 50px;
+                font-family: cursive;
+                font-weight: bold;
+                text-align: center;
+            }
+
+            .dropbox {
+                font-size: 20px;
+                color: rgb(0, 0, 0);
+                text-decoration: none;
+                margin: 5px;
+                font-family: cursive;
+                font-weight: bold;
+                text-align: left;
+            }
+
+            .item-style:hover {
+                text-decoration: underline;
+                transition: transform 0.2s ease-in-out;
+                transform: scale(1.05);
+            }
+
+            .items-row {
+                display: flex;
+                gap: 20px;
+                align-items: flex-start;
+                margin-left: 20px;
+                flex-wrap: wrap;
+            }
+
+            body {
+                background-image: url('https://www.freevector.com/uploads/vector/preview/18843/Free-Fall-Background-Vectors.jpg');
+                background-size: cover;
+                background-position: center;
+                background-repeat: repeat-y;
+            }
+        </style>
+    </head>
+    <body>
+        <header></header>
+        <main>
+        <div class="items-row">
+            <img src="https://m.media-amazon.com/images/I/51YPrTd6doS._AC_SL1500_.jpg" alt="Item 2" class="item1">
+            <div class="item-container">
+                <a href="https://www.amazon.com/Dinosaur-Hugging-Stuffed-Cartoon-Sleeping/dp/B096RSF8L9/ref=sr_1_2_sspa?crid=1M975I8AG0CU0&dib=eyJ2IjoiMSJ9.TOxAgg2l4Y9Az3JAOhTRNSGZzui39bl_akVdrRGtAUFTuLNCBZc_aCZGJCxur4srGGWC3s2dEooMRYT3VceABJ_hXLmvAh1wBNz9xctBt7w9hNlztflia_HRprY1ImPWgYHXVKsjJ7S9t9r7u9k7oK_2sJWNa9QFv2BYHT7B70WfdRKUXpeb1vyjU5_f7Jbvay2prz5tjz1b-FlhAwXg_BFodZagysDfCe7CBXpw-O77gCWPUwFHG9TAL2Edy-M_np_wx7FQqYzxggBXz663JojASZqzzLPDnvqhvWUpYig.B4qR3hUsqBn0hj8MZ3UTTtXUrFRV6d887JBeHYlkZX4&dib_tag=se&keywords=%3Barge%2Bdino%2Bsquishmallow&qid=1758948404&sprefix=large%2Bdino%2Bsquishmallow%2Caps%2C119&sr=8-2-spons&sp_csd=d2lkZ2V0TmFtZT1zcF9hdGY&th=1" class="item-style" target="_blank" rel="noopener noreferrer">$35.99 Click here to purchase</a>
+                <div class="dropbox">
+                    <form id="purchaseForm2">
+                        <label for="o1">Did you chose to purchase this item? If so, please select yes and press submit.</label>
+                        <select id="o1" class="dropbox">
+                            <option value="">Select One</option>
+                            <option value="yes">Yes</option>
+                            <option value="no">No</option>
+                        </select>
+                        <br>
+                        <input type="submit" class="dropbox" value="Submit">
+                    </form>
+                </div>
+            </div>
+        </div>
+        </main>
+        <footer></footer>
+
+        <script>
+        // Helpers to manage the persistent hidden items list
+        function getHiddenList() {
+            try { 
+                return JSON.parse(localStorage.getItem('registry:hiddenItems') || '[]'); 
+            }
+            catch { 
+                return []; 
+            }
+        }
+        function setHiddenList(arr) {
+            try { localStorage.setItem('registry:hiddenItems', JSON.stringify([...new Set(arr)])); } catch {}
+        }
+
+        document.getElementById('purchaseForm2').addEventListener('submit', function (event) {
+            event.preventDefault();
+            const decision = (document.getElementById('o1').value || '').toLowerCase();
+
+            // FIX: Hide 'item2' for this page
+            const id = 'item2';
+
+            let hidden = getHiddenList();
+            if (decision === 'yes') {
+                if (!hidden.includes(id)) hidden.push(id);
+            } else {
+                hidden = hidden.filter(x => x !== id);
+            }
+            setHiddenList(hidden);
+
+            window.location.href = 'Registry.html';
+        });
+        </script>
+    </body>
+</html>
